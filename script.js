@@ -34,36 +34,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // Gallery image modal functionality
   const galleryImages = [
     {
-      filename: "research-conference.jpg",
+      filename: "Screenshot 2025-09-10 091842.png",
       title: "Research Conference",
       description: "Presenting research findings at academic conference",
     },
-    {
-      filename: "academic-workshop.jpg",
-      title: "Academic Workshop",
-      description: "Participating in academic discussions and workshops",
-    },
-    {
-      filename: "research-work.jpg",
-      title: "Research Work",
-      description: "Data analysis and research methodology work",
-    },
-    {
-      filename: "graduation.jpg",
-      title: "Graduation Day",
-      description: "MA Economics completion ceremony",
-    },
-    {
-      filename: "team-work.jpg",
-      title: "Team Collaboration",
-      description: "Working with research team on projects",
-    },
-    {
-      filename: "academic-study.jpg",
-      title: "Academic Study",
-      description: "Research and learning activities",
-    },
-  ]
+  ];
 
   const galleryGrid = document.getElementById("galleryGrid")
   if (galleryGrid) {
@@ -89,14 +64,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const overlay = document.createElement("div")
       overlay.className = "gallery-overlay"
+      overlay.style.cssText = `
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(0,0,0,0.7);
+        color: #fff;
+        padding: 10px;
+        box-sizing: border-box;
+        opacity: 1;
+        transition: opacity 0.3s;
+      `;
       overlay.innerHTML = `
-        <h4>${imageData.title}</h4>
-        <p>${imageData.description}</p>
-      `
+        <h4 style='margin:0;'>${imageData.title}</h4>
+        <p style='margin:0;'>${imageData.description}</p>
+      `;
 
-      galleryItem.appendChild(img)
-      galleryItem.appendChild(overlay)
-      galleryGrid.appendChild(galleryItem)
+      galleryItem.style.position = "relative";
+      galleryItem.appendChild(img);
+      galleryItem.appendChild(overlay);
+      galleryGrid.appendChild(galleryItem);
 
       // Add click event for modal (reuse existing modal functionality)
       img.addEventListener("click", function () {
