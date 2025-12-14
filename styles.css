@@ -387,7 +387,11 @@ body {
 
 .download-cv-btn i {
   font-size: 1.1rem;
-  animation: bounce 2s infinite;
+  transition: transform 0.3s ease;
+}
+
+.download-cv-btn:hover i {
+  animation: bounce 0.6s ease;
 }
 
 @keyframes bounce {
